@@ -1,0 +1,74 @@
+#
+# Include file for OASIS3 Makefile for Nuwa
+#
+###############################################################################
+#
+# CHAN	: communication technique used in OASIS3 (MPI1/MPI2/NONE)
+CHAN            = MPI1
+#
+# Paths for libraries, object files and binaries
+#
+# COUPLE	: path for oasis3-mct main directory
+COUPLE          = path_to_models_directory/oasis3-mct_$(version_oasis)
+#
+# ARCHDIR       : directory created when compiling
+ARCHDIR         = $(COUPLE)/build_oa3-mct
+#
+# MPI library
+MPIDIR      = $(MPI_ROOT)
+MPIBIN      = $(MPIDIR)/bin
+MPI_INCLUDE = $(MPIDIR)/include
+MPILIB      = -L$(MPIDIR)/lib
+MPIRUN      = $(MPIBIN)/mpirun
+#
+# NETCDF library
+NETCDF_INCLUDE  = `${NETCDF_CONFIG} --includedir`
+NETCDF_LIBRARY  = `${NETCDF_CONFIG} --flibs`
+#
+# Compiling and other commands
+MAKE        = make
+F90         = $(MPIBIN)/mpif90 -I$(MPI_INCLUDE)
+F           = $(F90)
+f90         = $(F90)
+f           = $(F90)
+CC          = $(MPIBIN)/mpicc -I$(MPI_INCLUDE)
+LD          = $(MPIBIN)/mpif90 $(MPILIB)
+# Static libraries compilation options
+STATOPT     =
+# Shared libraries options
+DYNOPT      = -fPIC
+LDDYNOPT    = -shared
+AR          = ar
+ARFLAGS     = -ruv
+# Fortran libraries for C linking
+F2C_LIBS    = -lmpi_mpifh -lgfortran -lm
+#
+# CPP keys and compiler options
+#  
+CPPDEF    = -Duse_comm_$(CHAN) -D__VERBOSE -DTREAT_OVERLAY -D__NO_16BYTE_REALS
+#
+# 
+FCBASEFLAGS  = -O2 -C -g -Mbounds -byteswapio -lpthread
+CCBASEFLAGS  = -O2
+#
+###################
+#
+# Additional definitions that should not be changed
+#
+FLIBS		= $(NETCDF_LIBRARY)
+# BINDIR        : directory for executables
+BINDIR          = $(ARCHDIR)/bin
+# LIBBUILD      : contains a directory for each library
+LIBBUILD        = $(ARCHDIR)/build/lib
+# INCPSMILE     : includes all *o and *mod for each library
+INCPSMILE       = -I$(LIBBUILD)/psmile.$(CHAN) -I$(LIBBUILD)/scrip  -I$(LIBBUILD)/mct
+
+F90FLAGS    = $(FCBASEFLAGS) $(INCPSMILE) $(CPPDEF) -I$(NETCDF_INCLUDE)
+f90FLAGS    = $(FCBASEFLAGS) $(INCPSMILE) $(CPPDEF) -I$(NETCDF_INCLUDE)
+FFLAGS      = $(FCBASEFLAGS) $(INCPSMILE) $(CPPDEF) -I$(NETCDF_INCLUDE)
+fFLAGS      = $(FCBASEFLAGS) $(INCPSMILE) $(CPPDEF) -I$(NETCDF_INCLUDE)
+CCFLAGS     = $(CCBASEFLAGS) $(INCPSMILE) $(CPPDEF) -I$(NETCDF_INCLUDE)
+LDFLAGS     = $(FCBASEFLAGS)
+F2C_LDFLAGS = $(F2C_LIBS)
+#
+#############################################################################

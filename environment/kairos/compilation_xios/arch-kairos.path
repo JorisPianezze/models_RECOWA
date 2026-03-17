@@ -1,0 +1,15 @@
+NETCDF_INCDIR="-I/users/p20024/p20024pj/models_IANOS_nvhpc_261/libraries/build_netcdf-4.6.1/include"
+NETCDF_LIBDIR="-L/users/p20024/p20024pj/models_IANOS_nvhpc_261/libraries/build_netcdf-4.6.1/lib"
+NETCDF_LIB="-lnetcdff -lnetcdf -lm -lnetcdf -lhdf5_hl -lhdf5 -lsz -laec -lz -ldl"
+
+MPI_INCDIR=""
+MPI_LIBDIR=""
+MPI_LIB=""
+
+HDF5_INCDIR=""
+HDF5_LIBDIR=""
+HDF5_LIB=""
+
+OASIS_INCDIR="-I/users/p20024/p20024pj/models_IANOS_nvhpc_261/oasis3-mct_5.2/build_oa3-mct/include"
+OASIS_LIBDIR="-L/users/p20024/p20024pj/models_IANOS_nvhpc_261/oasis3-mct_5.2/build_oa3-mct/lib"
+OASIS_LIB="-lpsmile.MPI1 -lscrip -lmct -lmpeu"

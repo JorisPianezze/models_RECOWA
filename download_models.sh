@@ -9,12 +9,12 @@
 #         ~~~~~~~~~~~~~~
 # ###################################
 
-export download_oasis=true
-export download_mesonh=true
+export download_oasis=false
+export download_mesonh=false
 export download_wrf=false
 export download_croco=true
 export download_ww3=false
-export download_xios=true
+export download_xios=false
 
 if [ ! -e environment.sh ]; then
   echo '  envionment.sh file is missing'
@@ -56,7 +56,7 @@ if [ ${download_mesonh} = true ]; then
   then
     git clone https://src.koda.cnrs.fr/mesonh/mesonh-code.git
     cd mesonh-code
-    git checkout PACK-MNH-V${version_mesonh}-OPENACC-4-KAIROS-GH200
+    git checkout -b MNH-57X-OPENACC-merge-MNH-57X remotes/origin/MNH-57X-OPENACC-merge-MNH-57X
     cd ..
     mv mesonh-code MNH-V${version_mesonh}
     cp environment/${machine}/compilation_mesonh/configure MNH-V${version_mesonh}/src/

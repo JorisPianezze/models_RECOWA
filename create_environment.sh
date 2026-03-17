@@ -20,6 +20,10 @@ elif [[ ${HOSTNAME} = 'turpan'* ]]; then
 
   export machine='turpan'
 
+elif [[ ${HOSTNAME} = 'kairos'* ]]; then
+
+  export machine='kairos'
+
 elif [[ ${HOSTNAME} = 'LALL224858' ]]; then
  
   export machine='laptop_joris'
