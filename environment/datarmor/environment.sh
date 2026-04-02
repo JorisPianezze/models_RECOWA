@@ -12,8 +12,14 @@ export version_croco='2.1.0'
 export version_ww3='7.14'
 export version_xios='3.0-trunk'
 
+module purge
+module load cmake/3.15.0
+module load gcc/12.2.0
+module load impi/2019.9.304
+
 export CC=mpicc
 export FC=mpif90
+export MPIFC=mpif90
 
 export NETCDF_CONFIG=path_to_models_directory/libraries/build_netcdf-${version_netcdf_fortran}/bin/nf-config
 export OASISDIR=path_to_models_directory/oasis3-mct_${version_oasis}/build_oa3-mct
