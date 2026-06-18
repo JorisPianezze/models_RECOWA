@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source /home/piaj/04_tools_libs/spack/share/spack/setup-env.sh
+spack load gcc@13.4.0
+
 export machine='laptop_joris'
 
 export version_libaec='1.1.3'
