@@ -1,8 +1,8 @@
 /environment.sh
-MNH-V*
-libraries/*
-oasis3-mct_*
-croco-v*
-install.rst
-install.md
-download_models.sh
+/MNH-V*
+/libraries/*
+/oasis3-mct_*
+/croco-v*
+/install.rst
+/install.md
+/download_models.sh
