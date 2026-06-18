@@ -91,17 +91,14 @@ if [[ -v version_croco && -n ${version_croco} ]]; then
   if [[ ! -d croco-v${version_croco} ]]
   then
     git clone https://gitlab.inria.fr/croco-ocean/croco.git
-    cd croco
-    git checkout v${version_croco}
-    mkdir exe_CPLOA_${machine} ; cd exe_CPLOA_${machine}
-    cp ../../environments/${machine}/compilation_croco/jobcomp .
-    cp ../../environments/${machine}/compilation_croco/clean.sh .
-    mkdir MY_SRC ; cd MY_SRC
-    cp ../../../environments/${machine}/compilation_croco/MY_SRC_CPLOA/param.h .
-    cp ../../../environments/${machine}/compilation_croco/MY_SRC_CPLOA/cppdefs.h .
-    cd ../../../
     mv croco croco-v${version_croco}
-    sed -i "s|path_to_models_directory|${PWD}|g" croco-v${version_croco}/exe_CPLOA_${machine}/jobcomp
+    cd croco-v${version_croco}
+    git checkout v${version_croco}
+    cp -R ../environments/${machine}/compilation_croco/exe_CPLOA_NOXIOS .
+    cp -R ../environments/${machine}/compilation_croco/exe_CPLOA_XIOS .
+    sed -i "s|path_to_models_directory|${PWD}|g" exe_CPLOA_NOXIOS/jobcomp
+    sed -i "s|path_to_models_directory|${PWD}|g" exe_CPLOA_XIOS/jobcomp
+    cd ..
   else
     echo '  croco-v'${version_croco}' directory already exists -> nothing has been done.'
   fi

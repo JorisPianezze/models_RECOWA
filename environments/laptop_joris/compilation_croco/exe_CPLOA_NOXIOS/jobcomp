@@ -31,7 +31,7 @@
 #
 # set source
 #
-SOURCE1=path_to_models_directory/croco-v${version_croco}/OCEAN
+SOURCE1=path_to_models_directory/OCEAN
 
 #
 # determine operating system
@@ -68,7 +68,7 @@ PRISM_ROOT_DIR=${OASISDIR}
 # if coupling with OASIS3-MCT is activated :
 # => you need to use XIOS compiled with the "--use_oasis oasis3_mct" flag
 #-----------------------------------------------------------
-XIOS_ROOT_DIR=$HOME/xios
+XIOS_ROOT_DIR=${XIOS_DIR_OASIS}
 
 ####################################################
 # END OF USER'S MODIFICATIONS
