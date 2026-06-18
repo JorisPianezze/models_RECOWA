@@ -74,6 +74,7 @@ if [ -e environments/${machine}/environment.sh ]; then
 
   mkdir libraries ; cd libraries
   ln -sf ../environments/common/libraries/*.sh .
+  ln -sf ../environments/${machine}/compilation_libraries/*.sh .
 
 else
   echo "  You are running on '${machine}' and"

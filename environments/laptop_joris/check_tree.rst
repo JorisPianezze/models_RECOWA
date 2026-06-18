@@ -1,6 +1,6 @@
 .. treeview::
 
-   - :dir:`folder` models_YOURCASESTUDY/
+   - :dir:`folder` models_PROJECT/
 
      - :dir:`folder` croco-v2.1.0/
 

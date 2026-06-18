@@ -1,12 +1,4 @@
 #!/bin/bash
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#SBATCH --job-name=compile
-#SBATCH --time=10:00:00
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH -o netcdf.eo%j
-#SBATCH -e netcdf.eo%j
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # ###################################
 #          J. Pianezze
