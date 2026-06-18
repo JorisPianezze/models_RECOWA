@@ -1,6 +1,4 @@
 .. code-block:: bash
 
-   cd models_YOURPROJECT
-   source environment.sh
-   cd libraries
+   cd models_YOURPROJECT/libraries
    ./compile.sh
