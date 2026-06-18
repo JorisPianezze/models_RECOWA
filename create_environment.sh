@@ -70,8 +70,6 @@ if [ -e environments/${machine}/environment.sh ]; then
   sed -i "s|path_to_models_directory|${PWD}|g" environment.sh
   cat environment.sh
 
-  ln -sf environments/${machine}/install.rst .
-
   ln -sf environments/common/download_models.sh .
 
   mkdir libraries ; cd libraries
