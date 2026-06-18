@@ -51,7 +51,7 @@ if [[ -v version_mesonh && -n ${version_mesonh} ]]; then
   then
     git clone https://src.koda.cnrs.fr/mesonh/mesonh-code.git
     cd mesonh-code
-    git checkout -b MNH-57X-OPENACC-merge-MNH-57X remotes/origin/MNH-57X-OPENACC-merge-MNH-57X
+    git checkout -b PACK-MNH-V${version_mesonh} PACK-MNH-V${version_mesonh}
     cd ..
     mv mesonh-code MNH-V${version_mesonh}
     cp environments/${machine}/compilation_mesonh/configure MNH-V${version_mesonh}/src/
