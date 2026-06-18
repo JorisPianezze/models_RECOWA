@@ -81,6 +81,11 @@
 # undef  AGRIF_2WAY
                       /* OA and OW Coupling via OASIS (MPI) */
 # define OA_COUPLING
+# ifdef  OA_COUPLING
+#  define READ_PATM
+#  define OBC_PATM
+#  undef  OA_GRID_UV
+# endif
 # undef  OW_COUPLING
 # ifdef OW_COUPLING
 #  undef OW_COUPLING_FULL
@@ -327,9 +332,8 @@
 #  undef  DIAGNOSTICS_TS_ADV
 #  undef  DIAGNOSTICS_TS_MLD
 #  ifdef DIAGNOSTICS_TS_MLD
-#   define DIAGNOSTICS_TS_MLD_CRIT
+#   undef  DIAGNOSTICS_TS_MLD_DENS
 #  endif
-
 # endif
 
 # undef DIAGNOSTICS_TSVAR
