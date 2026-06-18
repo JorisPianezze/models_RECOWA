@@ -39,21 +39,55 @@ else
 fi
 
 # ---------------------------------------
+#   Test presence of environment file
+# ---------------------------------------
+
+if [ -e environment.sh ]; then
+  echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+  echo "   You've already set your environment  "
+  echo "      ~ Nothing has been done ~         "
+  echo "                                        "
+  echo "      To compile RECOWA system          "
+  echo "                                        "
+  echo "    https://recowa.readthedocs.io/      "
+  echo "                or                      "
+  echo "           install.rst                  "
+  echo "                                        "
+  echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+  exit
+fi
+
+# ---------------------------------------
 #   Link environment file
 # ---------------------------------------
 
-echo ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '
-if [ -e environment/${machine}/environment.sh ]; then
-  echo '  You are running on '${machine}' with '
-  echo '  following environment :              '
-  echo '                                       '
-  cp environment/${machine}/environment.sh .
-
+echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+if [ -e environments/${machine}/environment.sh ]; then
+  echo "  You are running on '${machine}' with "
+  echo "       following environment :         "
+  echo "                                       "
+  cp environments/${machine}/environment.sh .
   sed -i "s|path_to_models_directory|${PWD}|g" environment.sh
-
   cat environment.sh
+
+  ln -sf environments/${machine}/install.rst .
+
+  ln -sf environments/common/download_models.sh .
+
+  mkdir libraries ; cd libraries
+  ln -sf ../environments/common/libraries/*.sh .
+
 else
-  echo '  You are running on '${machine}' and'
-  echo '  this machine is not tested yet     '
+  echo "  You are running on '${machine}' and"
+  echo "  this machine is not tested yet     "
 fi
-echo ' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '
+
+echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+echo "                                        "
+echo "      To compile RECOWA system          "
+echo "                                        "
+echo "    https://recowa.readthedocs.io/      "
+echo "                or                      "
+echo "           install.rst                  "
+echo "                                        "
+echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "

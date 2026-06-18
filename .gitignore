@@ -1,9 +1,7 @@
 /environment.sh
 MNH-V*
-libraries/build_netcdf-*
-libraries/hdf5-*
-libraries/libaec-*
-libraries/netcdf-c-*
-libraries/netcdf-fortran-*
+libraries/*
 oasis3-mct_*
 croco-v*
+install.rst
+install.md
