@@ -20,3 +20,5 @@
      - :dir:`folder` WW3-v7.14
 
      - :dir:`folder` xios-3.0-trunk
+
+     - :dir:`folder` xios-3.0-trunk_oasis3-mct_5.2
