@@ -1,4 +1,6 @@
 /environment.sh
+/WW3-v*
+/xios-*
 /MNH-V*
 /libraries/*
 /oasis3-mct_*
