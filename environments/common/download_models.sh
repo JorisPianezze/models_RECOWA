@@ -138,10 +138,14 @@ if [[ -v version_xios && -n ${version_xios} ]]; then
 
   if [[ ! -d xios-${version_xios} ]]
   then
-    svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS3/trunk xios-3.0-trunk
-    cp environments/${machine}/compilation_xios/arch-${machine}.env xios-3.0-trunk/arch/
-    cp environments/${machine}/compilation_xios/arch-${machine}.fcm xios-3.0-trunk/arch/
-    cp environments/${machine}/compilation_xios/arch-${machine}.path xios-3.0-trunk/arch/
+    svn co http://forge.ipsl.jussieu.fr/ioserver/svn/XIOS3/trunk xios-${version_xios}
+    cp environments/${machine}/compilation_xios/arch-${machine}.env xios-${version_xios}/arch/
+    cp environments/${machine}/compilation_xios/arch-${machine}.fcm xios-${version_xios}/arch/
+    cp environments/${machine}/compilation_xios/arch-${machine}.path xios-${version_xios}/arch/
+    sed -i "s|path_to_models_directory|${PWD}|g" xios-${version_xios}/arch/arch-${machine}.env
+
+    cp -r xios-${version_xios} xios-${version_xios}_oasis3-mct_${version_oasis}
+
   else
     echo '  xios-'${version_xios}' directory already exists -> nothing has been done.'
   fi
