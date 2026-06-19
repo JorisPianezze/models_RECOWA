@@ -28,6 +28,10 @@ elif [[ ${HOSTNAME} = 'LALL224858' ]]; then
  
   export machine='laptop_joris'
 
+elif [[ ${HOSTNAME} = 'LELL213323' ]]; then
+
+  export machine='laptop_mathieu'
+
 elif [[ ${HOSTNAME} = 'datarmor'* ]]; then
 
   export machine='datarmor'
