@@ -5,6 +5,7 @@
 /libraries/*
 /oasis3-mct_*
 /croco-v*
+/wrf-crocov*
 /install.rst
 /install.md
 /download_models.sh
