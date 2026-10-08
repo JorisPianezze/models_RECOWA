@@ -13,7 +13,7 @@
 #   RECOWA
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-export version_recowa='0.1'
+export version_recowa='0.1.0'
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #   External libraries (NetCDF)
@@ -40,3 +40,9 @@ export version_mesonh='6-0-1'
 export version_croco='2.1.3'
 export version_ww3='7.14'
 export version_wrf='2.0'
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#   Tools
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+export version_create_rmp_files_for_oasis='0.1.0'
