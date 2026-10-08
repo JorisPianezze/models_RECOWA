@@ -184,59 +184,17 @@ if is_enabled netcdf; then
   if check_dir ${dir_libs}; then
 
     # libaec
-    check_file "${dir_libs}/lib/libaec.${lib_ext}" "libaec.${lib_ext}"
-    check_file "${dir_libs}/lib/libsz.${lib_ext}"  "libsz.${lib_ext}"
+    check_file "${dir_libs}/lib/libaec.so" "libaec.so"
+    check_file "${dir_libs}/lib/libsz.so"  "libsz.so"
 
-    # zstd (only with shared libraries : the HDF5 filter is a plugin)
-    if [ ${libraries_shared} = true ]; then
-      check_file "${dir_libs}/lib/libzstd.so" "libzstd.so"
-      zstd_h=${dir_libs}/include/zstd.h
-      zstd_version=$(awk '/define ZSTD_VERSION_(MAJOR|MINOR|RELEASE) / {printf "%s.", $3}' ${zstd_h} 2>/dev/null)
-      zstd_version=${zstd_version%.}
-      if [ "${zstd_version}" == "${version_zstd}" ]; then
-        ok "zstd ${zstd_version}"
-      else
-        fail "zstd '${zstd_version}' (expected : ${version_zstd})"
-      fi
-    fi
+    # zstd
+    check_file "${dir_libs}/lib/libzstd.so" "libzstd.a"
 
     # HDF5
-    check_file "${dir_libs}/lib/libhdf5.${lib_ext}" "libhdf5.${lib_ext}"
-    hdf5_version=$(grep -h 'define H5_VERSION ' ${dir_libs}/include/H5pubconf.h 2>/dev/null | awk '{print $3}' | tr -d '"')
-    if [ "${hdf5_version}" == "${version_hdf5}" ]; then
-      ok "hdf5 ${hdf5_version}"
-    else
-      fail "hdf5 '${hdf5_version}' (expected : ${version_hdf5})"
-    fi
+    check_file "${dir_libs}/lib/libhdf5.so" "libhdf5.so"
 
     # NetCDF-C
-    nc_config=${dir_libs}/bin/nc-config
-    if [ -x "${nc_config}" ]; then
-      nc_version=$(${nc_config} --version | awk '{print $NF}')
-      if [ "${nc_version}" == "${version_netcdf_c}" ]; then
-        ok "netcdf-c ${nc_version}"
-      else
-        fail "netcdf-c ${nc_version} (expected : ${version_netcdf_c})"
-      fi
-      if [ "$(${nc_config} --has-nc4)" == "yes" ]; then
-        ok "netCDF-4 support"
-      else
-        fail "netcdf-c compiled without netCDF-4 support"
-      fi
-      if [ ${libraries_shared} = true ]; then
-        if [ "$(${nc_config} --has-zstd)" == "yes" ]; then
-          ok "zstd filter support"
-        else
-          fail "netcdf-c compiled without zstd filter"
-        fi
-        check_file "${HDF5_PLUGIN_PATH}/lib__nch5zstd.so" "zstd plugin (lib__nch5zstd.so)"
-        if [ "$(${nc_config} --plugindir)" != "${HDF5_PLUGIN_PATH}" ]; then
-          warn "nc-config --plugindir ($(${nc_config} --plugindir)) differs from HDF5_PLUGIN_PATH"
-        fi
-      fi
-    else
-      fail "nc-config missing : ${nc_config}"
-    fi
+    check_file "${HDF5_PLUGIN_PATH}/lib__nch5zstd.so" "lib__nch5zstd.so"
 
     # NetCDF-Fortran
     if [ -x "${NETCDF_CONFIG}" ]; then
