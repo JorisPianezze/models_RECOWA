@@ -21,6 +21,8 @@ source ${models_recowa_dir}/environments/<machine>/environment.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 export NETCDF_CONFIG=${models_recowa_dir}/libraries/build_netcdf-${version_netcdf_fortran}/bin/nf-config
-export OASISDIR=${models_recowa_dir}/oasis3-mct_${version_oasis}/build_oa3-mct
-export XIOS_DIR=${models_recowa_dir}/xios-${version_xios}
-export XIOS_DIR_OASIS=${models_recowa_dir}/xios-${version_xios}_oasis3-mct_${version_oasis}
+export HDF5_PLUGIN_PATH=${models_recowa_dir}/libraries/build_netcdf-${version_netcdf_fortran}/plugins
+export LD_LIBRARY_PATH=${models_recowa_dir}/libraries/build_netcdf-${version_netcdf_fortran}/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export OASISDIR=${models_recowa_dir}/libraries/oasis3-mct_${version_oasis}/build_oa3-mct
+export XIOS_DIR=${models_recowa_dir}/libraries/xios-${version_xios}
+export XIOS_DIR_OASIS=${models_recowa_dir}/libraries/xios-${version_xios}_oasis3-mct_${version_oasis}

@@ -19,6 +19,7 @@ export version_recowa='0.1'
 #   External libraries (NetCDF)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+export version_zstd='1.5.7'
 export version_libaec='1.1.3'
 export version_hdf5='1.14.6'
 export version_netcdf_c='4.9.3'
