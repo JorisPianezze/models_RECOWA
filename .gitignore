@@ -2,7 +2,13 @@
 /WW3-v*
 /xios-*
 /MNH-V*
-/libraries/*
+/libraries/netcdf*
+/libraries/hdf*
+/libraries/libaec*
+/libraries/zstd*
+/libraries/oasis*
+/libraries/xios*
+/libraries/build*
 /oasis3-mct_*
 /croco-v*
 /wrf-crocov*
