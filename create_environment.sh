@@ -17,14 +17,14 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 case $(hostname) in
-  belenos*)   export machine='belenos' ;;
-  olympe*)    export machine='olympe' ;;
-  nuwa)       export machine='nuwa' ;;
-  turpan*)    export machine='turpan' ;;
-  kairos*)    export machine='kairos' ;;
-  datarmor*)  export machine='datarmor' ;;
+#  belenos*)   export machine='belenos' ;;
+#  olympe*)    export machine='olympe' ;;
+#  nuwa)       export machine='nuwa' ;;
+#  turpan*)    export machine='turpan' ;;
+#  kairos*)    export machine='kairos' ;;
+#  datarmor*)  export machine='datarmor' ;;
   LALL224858) export machine='laptop_joris' ;;
-  LELL213323) export machine='laptop_mathieu' ;;
+#  LELL213323) export machine='laptop_mathieu' ;;
   *)          export machine='unknown' ;;
 esac
 
