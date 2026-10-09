@@ -2,7 +2,7 @@
 
    cd models_YOURPROJECT
    source environment.sh
-   cd MNH-V6-0-0/src
+   cd MNH-V6-0-1/src
    export VER_MPI=MPIAUTO
    export VER_CDF=CDFPERSO
    export VER_OASIS=OASISPERSO
