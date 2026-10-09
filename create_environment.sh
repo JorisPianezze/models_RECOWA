@@ -21,7 +21,8 @@ case $(hostname) in
 #  olympe*)    export machine='olympe' ;;
 #  nuwa)       export machine='nuwa' ;;
 #  turpan*)    export machine='turpan' ;;
-#  kairos*)    export machine='kairos' ;;
+  kairoslo*)  export machine='kairos_cpu' ;;
+  kairosgh*)  export machine='kairos_gpu' ;;
 #  datarmor*)  export machine='datarmor' ;;
   LALL224858) export machine='laptop_joris' ;;
 #  LELL213323) export machine='laptop_mathieu' ;;

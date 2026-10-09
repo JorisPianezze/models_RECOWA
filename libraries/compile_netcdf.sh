@@ -58,12 +58,13 @@ if [ ${compile_libaec} = true ]; then
     fi
 
     cd ${dir_to_install}/../libaec-${version_libaec}
-    ./configure --prefix=${dir_to_install}     \
+    LD_PRELOAD=${LD_PRELOAD} ./configure \
+	        --prefix=${dir_to_install} \
                 --libdir=${dir_to_install}/lib \
                 CC=${CC} CFLAGS="-fPIC"
-    make -j 1
-    make install
-    make clean
+    LD_PRELOAD=${LD_PRELOAD} make -j 1
+    LD_PRELOAD=${LD_PRELOAD} make install
+    LD_PRELOAD=${LD_PRELOAD} make clean
 
   else
     echo "  libaec-${version_libaec} already compiled -> nothing has been done."
@@ -93,8 +94,8 @@ if [ ${compile_zstd} = true ]; then
     fi
 
     cd ${dir_to_install}/../zstd-${version_zstd}
-    make -C lib -j 1 CC=${CC} PREFIX=${dir_to_install} LIBDIR=${dir_to_install}/lib install
-    make -C lib clean
+    LD_PRELOAD=${LD_PRELOAD} make -C lib -j 1 CC=${CC} PREFIX=${dir_to_install} LIBDIR=${dir_to_install}/lib install
+    LD_PRELOAD=${LD_PRELOAD} make -C lib clean
 
   else
     echo "  zstd-${version_zstd} already compiled -> nothing has been done."
@@ -124,16 +125,17 @@ if [ ${compile_hdf5} = true ]; then
   fi
 
   cd ${dir_to_install}/../hdf5-${version_hdf5}
-  ./configure --enable-fortran \
+  LD_PRELOAD=${LD_PRELOAD} ./configure \
+              --enable-fortran \
               --enable-parallel \
               --prefix=${dir_to_install} \
               --libdir=${dir_to_install}/lib \
               --with-szlib=${dir_to_install}/include,${dir_to_install}/lib \
               CC=${CC} CFLAGS="-fPIC" FC=${FC} FCFLAGS="-fPIC" \
               LDFLAGS="-L${dir_to_install}/lib" LIBS="-lsz -laec -lz"
-  make -j 1
-  make install
-  make clean
+  LD_PRELOAD=${LD_PRELOAD} make -j 1
+  LD_PRELOAD=${LD_PRELOAD} make install
+  LD_PRELOAD=${LD_PRELOAD} make clean
 
   else
     echo "  hdf5-${version_hdf5} already compiled -> nothing has been done."
@@ -163,7 +165,8 @@ if [ ${compile_netcdf_c} = true ]; then
   fi
 
   cd ${dir_to_install}/../netcdf-c-${version_netcdf_c}
-  ./configure --disable-nczarr \
+  LD_PRELOAD=${LD_PRELOAD} ./configure \
+              --disable-nczarr \
               --disable-libxml2 \
               --disable-dap \
               --disable-byterange \
@@ -175,9 +178,9 @@ if [ ${compile_netcdf_c} = true ]; then
               CPPFLAGS="-I${dir_to_install}/include" \
               LDFLAGS="-L${dir_to_install}/lib" \
               LIBS="-lhdf5_hl -lhdf5 -lsz -laec -lzstd -lz -ldl"
-  make -j 1
-  make install
-  make clean
+  LD_PRELOAD=${LD_PRELOAD} make -j 1
+  LD_PRELOAD=${LD_PRELOAD} make install
+  LD_PRELOAD=${LD_PRELOAD} make clean
   
   else
     echo "  netcdf-c-${version_netcdf_c} already compiled -> nothing has been done."
@@ -207,15 +210,16 @@ if [ ${compile_netcdf_fortran} = true ]; then
   fi
 
   cd ${dir_to_install}/../netcdf-fortran-${version_netcdf_fortran}
-  ./configure --prefix=${dir_to_install} \
+  LD_PRELOAD=${LD_PRELOAD} ./configure \
+              --prefix=${dir_to_install} \
               --libdir=${dir_to_install}/lib \
               CC=${CC} CFLAGS="-fPIC" FC=${FC} FCFLAGS="-fPIC" FFLAGS="-fPIC"  \
               CPPFLAGS="-I${dir_to_install}/include" \
               LDFLAGS="-L${dir_to_install}/lib" \
               LIBS="-lnetcdf -lhdf5_hl -lhdf5 -lsz -laec -lzstd -lz -ldl"
-  make -j 1
-  make install
-  make clean
+  LD_PRELOAD=${LD_PRELOAD} make -j 1
+  LD_PRELOAD=${LD_PRELOAD} make install
+  LD_PRELOAD=${LD_PRELOAD} make clean
 
   else
     echo "  netcdf-fortran-${version_netcdf_fortran} already compiled -> nothing has been done."
