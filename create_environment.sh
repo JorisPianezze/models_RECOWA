@@ -12,60 +12,20 @@
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-print_next_steps() {
-
-  local step=1
-
-  echo "   Next steps :                                      "
-  echo "                                                     "
-  echo "   ${step}. Load the environment (each new session) :"
-  echo "        source environment.sh                        "
-  echo "                                                     "
-  step=$((step+1))
-
-  if [[ " ${components} " == *" libraries "* ]]; then
-    echo "   ${step}. Download and compile the libraries :"
-    echo "        cd libraries                            "
-    echo "        ./download_libraries.sh                 "
-    if [ -n "${slurm_options}" ]; then
-      echo "        sbatch ${slurm_options} compile_libraries.sh"
-    else
-      echo "        ./compile_libraries.sh                "
-    fi
-    echo "        cd ..                                   "
-    echo "                                                "
-    step=$((step+1))
-  fi
-
-  echo "   ${step}. Download the models :"
-  echo "        ./download_models.sh     "
-  echo "                                 "
-  step=$((step+1))
-
-  echo "   ${step}. Compile the models, following the documentation :    "
-  echo "        https://recowa.readthedocs.io/                           "
-  echo "        ($(echo ${components} | sed 's/\blibraries\b//' | xargs))"
-  echo "                                                                 "
-  step=$((step+1))
-
-  echo "   ${step}. Check the installation :"
-  echo "        ./check_install.sh          "
-  echo "                                    "
-}
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #   Detect machine automaticaly
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 case $(hostname) in
-  belenos*)   export machine='belenos' ;;
-  olympe*)    export machine='olympe' ;;
-  nuwa)       export machine='nuwa' ;;
-  turpan*)    export machine='turpan' ;;
-  kairos*)    export machine='kairos' ;;
-  datarmor*)  export machine='datarmor' ;;
+#  belenos*)   export machine='belenos' ;;
+#  olympe*)    export machine='olympe' ;;
+#  nuwa)       export machine='nuwa' ;;
+#  turpan*)    export machine='turpan' ;;
+  kairoslo*)  export machine='kairos_cpu' ;;
+  kairosgh*)  export machine='kairos_gpu' ;;
+#  datarmor*)  export machine='datarmor' ;;
   LALL224858) export machine='laptop_joris' ;;
-  LELL213323) export machine='laptop_mathieu' ;;
+#  LELL213323) export machine='laptop_mathieu' ;;
   *)          export machine='unknown' ;;
 esac
 
@@ -85,10 +45,11 @@ if [ -e environment.sh ]; then
     echo "    - ${comp}"
   done
   echo "                                        "
-  echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+  echo "   Please follow the documentation to   "
+  echo "   install and compile everything :     "
   echo "                                        "
-  echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
-  print_next_steps
+  echo "   https://recowa.readthedocs.io        " 
+  echo "                                        "
   echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
   exit 1
 fi
@@ -127,9 +88,12 @@ echo "   Components compatible :              "
 for comp in ${components}; do
   echo "    - ${comp}"
 done
-echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+echo "                                        "
+echo "   Please follow the documentation to   "
+echo "   install and compile everything :     "
+echo "                                        "
+echo "   https://recowa.readthedocs.io        "
 echo "                                        "
 echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
-print_next_steps
-echo " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+echo "                                        "
 

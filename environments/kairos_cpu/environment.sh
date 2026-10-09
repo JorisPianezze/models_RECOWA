@@ -2,15 +2,22 @@
 
 # #######################################################################
 #
-#   Environment for laptop_joris (Ubuntu 20.04)
+#   Environment for kairos on CPU nodes
 #
 # #######################################################################
 
-source /home/piaj/04_tools_libs/spack/share/spack/setup-env.sh
-spack load gcc@13.4.0
+module purge
 
-export CC=mpicc
-export FC=mpif90
+module load oneapi/2025.3
+module load 2025.3/compiler/2025.3.2
+module load 2025.3/mpi/2021.17
+
+export CC=mpiicx
+export FC=mpiifx
+
+# Set LD_PRELOAD for all oneAPI version to workaround conflicts between
+# libm and libimf that crashes ar and nm
+export LD_PRELOAD=/lib64/libm.so.6
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #    Components available and already tested on this machine
@@ -34,3 +41,5 @@ export FC=mpif90
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 export components='netcdf oasis xios xios_oasis croco mesonh'
+
+module list

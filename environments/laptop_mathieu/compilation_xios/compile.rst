@@ -2,17 +2,7 @@
 
   .. code-block:: bash
 
-     cd models_YOURPROJECT
+     cd models_RECOWA_v0.1
      source environment.sh
-     cd xios-3.0-trunk/
+     cd libraries/xios-3.0-3.0.6.0
      ./make_xios --full --arch ${machine} --job 2
-
-* To compile XIOS with OASIS
-
-  .. code-block:: bash
-
-     cd models_YOURPROJECT
-     source environment.sh
-     cd xios-3.0-trunk_oasis3-mct_5.2
-     # Comment the line 223 : # NETCDF_LIB="-lnetcdff -lnetcdf" 
-     ./make_xios --full --arch ${machine} --use_oasis oasis3_mct --job 2

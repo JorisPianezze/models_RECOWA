@@ -1,8 +1,8 @@
 .. code-block:: bash
 
-   cd models_YOURPROJECT
+   cd models_RECOWA_v0.1
    source environment.sh
-   cd MNH-V6-0-0/src
+   cd MNH-V6-0-1/src
    export VER_MPI=MPIAUTO
    export VER_CDF=CDFPERSO
    export VER_OASIS=OASISPERSO
