@@ -2,7 +2,7 @@
 
   .. code-block:: bash
 
-     cd models_YOURPROJECT
+     cd models_RECOWA_v0.1
      source environment.sh
      cd libraries/xios-3.0.6.0
      ./make_xios --full --arch ${machine} --job 2
@@ -11,7 +11,7 @@
 
   .. code-block:: bash
 
-     cd models_YOURPROJECT
+     cd models_RECOWA_v0.1
      source environment.sh
      cd libraries/xios-3.0.6.0_oasis3-mct_5.2
      ./make_xios --full --arch ${machine} --use_oasis oasis3_mct --job 2
