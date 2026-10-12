@@ -10,7 +10,7 @@ CHAN            = MPI1
 # Paths for libraries, object files and binaries
 #
 # COUPLE	: path for oasis3-mct main directory
-COUPLE          = path_to_models_directory/libraries/oasis3-mct_$(version_oasis)
+COUPLE          = /work/p20024/p20024pj/models_RECOWA_v0.1/libraries/oasis3-mct_$(version_oasis)
 #
 # ARCHDIR       : directory created when compiling
 ARCHDIR         = $(COUPLE)/build_oa3-mct
@@ -47,7 +47,7 @@ F2C_LIBS    = -lmpi_mpifh -lgfortran -lm
 # CPP keys and compiler options
 # 
 CPPDEF       = -Duse_comm_$(CHAN) -D__VERBOSE -DTREAT_OVERLAY
-FCBASEFLAGS  = -O2 -C -g -lpthread
+FCBASEFLAGS  = -O2 -g -traceback
 CCBASEFLAGS  = -O2
 #
 #############################################################################
